@@ -1,19 +1,46 @@
 package com.ShowerThoughts;
 
+
+
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.*;
 
 
-public class Username extends ActionBarActivity {
-
+public class Username extends ActionBarActivity implements View.OnClickListener {
+	EditText eUsername;
+	Button login;
+	String sUsername;
+	
+	
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_username);
+        
+        eUsername = (EditText) findViewById (R.id.username);
+        sUsername = eUsername.getText().toString();
+        login = (Button)findViewById(R.id.login);
+	    login.setOnClickListener(this); 
     }
-
+	private void loginClick() {
+		Intent intent = new Intent(this, MainActivity.class );
+		intent.putExtra("containsUsername", sUsername); //first argument is the name of the string being passed 
+		startActivity(intent);
+	}
+	
+	public void onClick (View v) {
+		switch (v.getId()) {
+			case R.id.login:
+				loginClick();
+				break;
+		}
+	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
