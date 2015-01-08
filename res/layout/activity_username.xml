@@ -12,23 +12,19 @@
         android:id="@+id/login"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="200dp"
         android:onClick="loginClick"
-        android:text="Start Showering" />
+        android:text="@string/start" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignLeft="@+id/button1"
+        android:layout_alignBottom="@+id/login"
         android:layout_marginBottom="88dp"
         android:ems="10"
-        android:hint="Enter your username"
-        android:inputType="textPersonName" >
+        android:hint="@string/prompt" >
 
         <requestFocus />
     </EditText>

@@ -5,19 +5,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
 
 public class MainActivity extends ActionBarActivity {
-
+	boolean canLogIn = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Intent intent = getIntent();
 		if (intent.hasExtra("containsUsername")){
+			canLogIn = true;
 			//go to the url with the username in it and the api key
 		}
-		
+		WebView listOfSongs = (WebView) findViewById (R.id.webview);
+		if (canLogIn) { //load url if it is a valid username entered
+			listOfSongs.loadUrl("http://"); //todo enter url with username values then parse the returning json
+		}
 	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
