@@ -22,13 +22,12 @@ public class Username extends ActionBarActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_username);
-        
         eUsername = (EditText) findViewById (R.id.username);
-        sUsername = eUsername.getText().toString();
         login = (Button)findViewById(R.id.login);
 	    login.setOnClickListener(this); 
     }
 	private void loginClick() {
+		sUsername = eUsername.getText().toString();
 		Intent intent = new Intent(this, MainActivity.class );
 		intent.putExtra("containsUsername", sUsername); //first argument is the name of the string being passed 
 		startActivity(intent);
