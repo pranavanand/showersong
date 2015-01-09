@@ -6,24 +6,24 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
-import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 	boolean canLogIn = false;
-	TextView TextView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		TextView = (TextView) findViewById(R.id.textView1);
+		
+		
 		Intent intent = getIntent();
-		String username = intent.getStringExtra("containsUsername");
+		String username = intent.getExtras().getString("sUsername");
 		if (intent.hasExtra("containsUsername")){ //go to the url with the username in it and the api key
 			canLogIn = true;
 		}
 		WebView listOfSongs = (WebView) findViewById (R.id.webview);
 		if (canLogIn) { //load url if it is a valid username entered
-			TextView.setText(username);
+			
+			//String url = "http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=thisisdyan&api_key=68f82cd7b37e7b23800c2025066531c9&format=json";
 			String url = "http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=" + username + "&api_key=68f82cd7b37e7b23800c2025066531c9&format=json";
 			listOfSongs.loadUrl(url); 
 		}
