@@ -14,14 +14,16 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Intent intent = getIntent();
-		if (intent.hasExtra("containsUsername")){
+		String username = intent.getStringExtra("containsUsername");
+		if (intent.hasExtra("containsUsername")){ //go to the url with the username in it and the api key
 			canLogIn = true;
-			//go to the url with the username in it and the api key
 		}
 		WebView listOfSongs = (WebView) findViewById (R.id.webview);
 		if (canLogIn) { //load url if it is a valid username entered
-			listOfSongs.loadUrl("http://"); //todo enter url with username values then parse the returning json
+			String url = "http://ws.audioscrobbler.com/2.0/?method=.gettoptracks&user=" + username + "&api_key=68f82cd7b37e7b23800c2025066531c9&format=json";
+			listOfSongs.loadUrl(url); 
 		}
+ 
 	}
 	
 
