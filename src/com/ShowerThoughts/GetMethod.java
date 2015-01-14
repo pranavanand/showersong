@@ -11,7 +11,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 public class GetMethod {
 
-	
+	2
 	public String getInternetData() throws Exception{
 		BufferedReader in = null;
 		String data = null;
