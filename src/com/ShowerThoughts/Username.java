@@ -28,8 +28,11 @@ public class Username extends ActionBarActivity implements View.OnClickListener 
     }
 	private void loginClick() {
 		sUsername = eUsername.getText().toString();
-		Intent intent = new Intent(this, MainActivity.class );
-		intent.putExtra("containsUsername", sUsername); //first argument is the name of the string being passed 
+		Intent intent = new Intent(this, GetMethod.class );
+		Intent intent2 = new Intent(this, MainActivity.class);
+		intent.putExtra("containsUsername", sUsername);
+		intent.putExtra("containsUsername", sUsername);
+		startActivity(intent2);//first argument is the name of the string being passed 
 		startActivity(intent);
 	}
 	
