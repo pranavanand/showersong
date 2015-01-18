@@ -20,8 +20,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-//import android.webkit.WebView;
-import android.widget.Toast;
+
 
 public class MainActivity extends ActionBarActivity {
 	
@@ -99,6 +98,7 @@ public class MainActivity extends ActionBarActivity {
 	
 	protected void onPostExecute(String result) {
 		//firstSong.setText
+		firstSong.setText(result);
 	}
 	
 	
