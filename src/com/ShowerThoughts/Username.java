@@ -2,14 +2,14 @@ package com.ShowerThoughts;
 
 
 
-import android.support.v7.app.ActionBarActivity;
-import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
 
 
 public class Username extends ActionBarActivity implements View.OnClickListener {
@@ -27,6 +27,7 @@ public class Username extends ActionBarActivity implements View.OnClickListener 
     }
 	private void loginClick() {
 		sUsername = eUsername.getText().toString();
+		((TheUrlClass) this.getApplication()).setUrl(sUsername);
 		Intent intent = new Intent(this, MainActivity.class);
 		intent.putExtra("containsUsername", sUsername);
 		startActivity(intent);
