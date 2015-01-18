@@ -3,6 +3,7 @@ package com.ShowerThoughts;
 
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,8 +17,6 @@ public class Username extends ActionBarActivity implements View.OnClickListener 
 	Button login;
 	String sUsername;
 	
-	
-	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +27,8 @@ public class Username extends ActionBarActivity implements View.OnClickListener 
     }
 	private void loginClick() {
 		sUsername = eUsername.getText().toString();
-		Intent intent = new Intent(this, GetMethod.class );
-		Intent intent2 = new Intent(this, MainActivity.class);
+		Intent intent = new Intent(this, MainActivity.class);
 		intent.putExtra("containsUsername", sUsername);
-		intent.putExtra("containsUsername", sUsername);
-		startActivity(intent2);//first argument is the name of the string being passed 
 		startActivity(intent);
 	}
 	
