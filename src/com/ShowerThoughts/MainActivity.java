@@ -44,7 +44,7 @@ public class MainActivity extends ActionBarActivity {
 		//fifthSong = (TextView) findViewById(R.id.textView5);
 		
 		client = new DefaultHttpClient();
-		new Read().execute("name");
+		new Reader().execute("name");
 		
 		Intent intent = getIntent();
 		Bundle bundle = intent.getExtras();
@@ -58,7 +58,7 @@ public class MainActivity extends ActionBarActivity {
 	
 	
 	
-	public JSONObject songCalled(int number) throws ClientProtocolException, IOException, JSONException {
+	public String songCalled(int number) throws ClientProtocolException, IOException, JSONException {
 		StringBuilder URL = new StringBuilder(url);
 		HttpGet get = new HttpGet(URL.toString());
 		HttpResponse r = client.execute(get);
@@ -67,15 +67,18 @@ public class MainActivity extends ActionBarActivity {
 			HttpEntity e = r.getEntity();
 			String data = EntityUtils.toString(e);
 			JSONArray songList = new JSONArray(data);
-			JSONObject latest = songList.getJSONObject(0);  
-			return latest; 
+			JSONObject latest = songList.getJSONObject(number); 
+			String s = latest.getString("name");
+			return s; 
 		} else {
 			return null;
 		}
 		
 	}
 	
-	public class Read extends AsyncTask<String, Integer, String>{
+	
+	
+	/*public class Read extends AsyncTask<String, Integer, String>{
 		
 		@Override
 		protected String doInBackground(String... params) {
@@ -93,11 +96,11 @@ public class MainActivity extends ActionBarActivity {
 			
 			return null;
 		}
-	}
+	} */
 	
-	protected void onPostExecute(String result) {
+	protected void onPostExecute(String result) throws ClientProtocolException, IOException, JSONException {
 		//firstSong.setText
-		firstSong.setText(result);
+		firstSong.setText(songCalled(0));
 	}
 	
 	
