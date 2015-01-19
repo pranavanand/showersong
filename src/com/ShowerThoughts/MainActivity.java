@@ -38,10 +38,10 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		firstSong = (TextView) findViewById(R.id.textView1);
-		secondSong = (TextView) findViewById(R.id.textView2);
-		thirdSong = (TextView) findViewById(R.id.textView3);
-		fourthSong = (TextView) findViewById(R.id.textView4);
-		fifthSong = (TextView) findViewById(R.id.textView5);
+		//secondSong = (TextView) findViewById(R.id.textView2);
+		//thirdSong = (TextView) findViewById(R.id.textView3);
+		//fourthSong = (TextView) findViewById(R.id.textView4);
+		//fifthSong = (TextView) findViewById(R.id.textView5);
 		
 		client = new DefaultHttpClient();
 		new Read().execute("name");
@@ -49,7 +49,6 @@ public class MainActivity extends ActionBarActivity {
 		Intent intent = getIntent();
 		Bundle bundle = intent.getExtras();
 		String username = bundle.getString("containsUsername");
-		//WebView listOfSongs = (WebView) findViewById (R.id.webview);
 			
 		
 		url = "http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user="+username+"&api_key=68f82cd7b37e7b23800c2025066531c9&format=json";
@@ -81,7 +80,7 @@ public class MainActivity extends ActionBarActivity {
 		@Override
 		protected String doInBackground(String... params) {
 		try {
-				json = songCalled(5);
+				json = songCalled(0);
 				return json.getString(params[0]);
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
