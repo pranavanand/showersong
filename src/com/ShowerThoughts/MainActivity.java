@@ -20,7 +20,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends ActionBarActivity {
 
-    public static final String TAG = "CoDirMain";
+    public static final String TAG = "ST_Main";
 
     private ListView mContactList;
     private String[] seeds;
@@ -57,24 +57,20 @@ public class MainActivity extends ActionBarActivity {
                     topTracks = response.getJSONObject("toptracks");
                     JSONArray tracks = response.getJSONArray("track");
                     
+                    
 
-                    Log.i(TAG, "Fetching contacts");
+                    
 
-                     = new String[results.length()]; // Basically IDs
-                    String[] fnames = new String[results.length()];
-                    String[] lnames = new String[results.length()];
-                    String[] cells  = new String[results.length()];
-                    String[] thumbs = new String[results.length()];
+                   //  = new String[results.length()]; // Basically IDs
+                    String[] songNames = new String[tracks.length()];
+                    String[] artistNames = new String[tracks.length()];
 
-                    for(int i = 0; i < results.length(); i++) {
-                        seeds[i]  = results.getJSONObject(i).getString("seed");
-                        fnames[i] = results.getJSONObject(i).getJSONObject("user").getJSONObject("name").getString("first");
-                        lnames[i] = results.getJSONObject(i).getJSONObject("user").getJSONObject("name").getString("last");
-                        cells[i]  = results.getJSONObject(i).getJSONObject("user").getString("cell");
-                        thumbs[i] = results.getJSONObject(i).getJSONObject("user").getJSONObject("picture").getString("thumbnail");
+                    for(int i = 0; i < tracks.length(); i++) {
+                        songNames[i]  = tracks.getJSONObject(i).getString("name");
+                        artistNames[i] = tracks.getJSONObject(i).getJSONObject("artist").getString("name");
                     }
 
-                    adapter = new ContactList(MainActivity.this, fnames, lnames, cells, thumbs);
+                    adapter = new ContactList(MainActivity.this, songNames, artistNames);
                     mContactList.setAdapter(adapter);
                     mContactList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
