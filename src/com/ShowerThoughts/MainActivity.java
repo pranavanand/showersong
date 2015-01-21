@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -19,10 +20,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends ActionBarActivity {
-
+	
     public static final String TAG = "ST_Main";
 
-    private ListView mContactList;
+    private ListView listview;
     private AsyncHttpClient client;
     String url;
 
@@ -34,10 +35,10 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = getIntent();
 		Bundle bundle = intent.getExtras();
 		String username = bundle.getString("containsUsername");
-			
+		
+		listview = (ListView) findViewById(R.id.listView1);
 		
 		url = "http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user="+username+"&api_key=68f82cd7b37e7b23800c2025066531c9&format=json";
-        //mContactList = (ListView) findViewById(R.id.contact_list);
 
         client = new AsyncHttpClient();
         client.get(url, new JsonHttpResponseHandler() {
@@ -55,25 +56,30 @@ public class MainActivity extends ActionBarActivity {
                 try {
                     topTracks = response.getJSONObject("toptracks");
                     JSONArray tracks = response.getJSONArray("track");
-                    
-                    
-
-                    
-
-                   //  = new String[results.length()]; // Basically IDs
                     String[] songNames = new String[tracks.length()];
                     String[] artistNames = new String[tracks.length()];
+                    String[] songAndArtists = new String[tracks.length()];
 
                     for(int i = 0; i < tracks.length(); i++) {
                         songNames[i]  = tracks.getJSONObject(i).getString("name");
                         artistNames[i] = tracks.getJSONObject(i).getJSONObject("artist").getString("name");
                     }
-               
-
+                    
+                    for(int i = 0; i < tracks.length(); i++) {
+                    	songAndArtists[i] = songNames[i] + artistNames[i];
+                    }
+                    
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, songAndArtists);
+                    listview.setAdapter(adapter);
+                    
+                    
                 } catch (JSONException e) {
                     Log.e(TAG, "Failed to parse JSON. " + e.toString());
                 }
             }
+            
+            
+            
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
@@ -93,7 +99,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
