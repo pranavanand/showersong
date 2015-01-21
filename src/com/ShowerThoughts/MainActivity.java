@@ -23,7 +23,6 @@ public class MainActivity extends ActionBarActivity {
     public static final String TAG = "ST_Main";
 
     private ListView mContactList;
-    private String[] seeds;
     private AsyncHttpClient client;
     String url;
 
@@ -42,7 +41,7 @@ public class MainActivity extends ActionBarActivity {
 
         client = new AsyncHttpClient();
         client.get(url, new JsonHttpResponseHandler() {
-            ContactList adapter;
+            //ContactList adapter;
 
             @Override
             public void onStart() {
@@ -69,17 +68,7 @@ public class MainActivity extends ActionBarActivity {
                         songNames[i]  = tracks.getJSONObject(i).getString("name");
                         artistNames[i] = tracks.getJSONObject(i).getJSONObject("artist").getString("name");
                     }
-
-                    adapter = new ContactList(MainActivity.this, songNames, artistNames);
-                    mContactList.setAdapter(adapter);
-                    mContactList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int p, long id) {
-                            final String seed = seeds[p];
-
-                            // Load Single Contact Activity
-                        }
-                    });
+               
 
                 } catch (JSONException e) {
                     Log.e(TAG, "Failed to parse JSON. " + e.toString());
