@@ -16,13 +16,4 @@
 
     </ListView>
 
-    <ListView
-        android:id="@+id/listView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/listView1"
-        android:layout_below="@+id/listView1"
-        android:layout_marginTop="48dp" >
-    </ListView>
- 
 </RelativeLayout>
