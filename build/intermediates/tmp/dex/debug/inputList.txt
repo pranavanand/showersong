@@ -1,0 +1,5 @@
+C:\Users\x2\workspace\shower_thoughts\build\intermediates\classes\debug
+C:\Users\x2\workspace\shower_thoughts\build\intermediates\pre-dexed\debug\classes-5c1831a164d2cf684220636862ad9c785c3a5d6f.jar
+C:\Users\x2\workspace\shower_thoughts\build\intermediates\pre-dexed\debug\android-async-http-1.4.6-015dcc1f0f6c5e7d26eb17ac5d84b4b057a67069.jar
+C:\Users\x2\workspace\shower_thoughts\build\intermediates\pre-dexed\debug\android-support-v7-appcompat-5ebd9f80186da7b044d07a20a532d6bed6b01f4b.jar
+C:\Users\x2\workspace\shower_thoughts\build\intermediates\pre-dexed\debug\android-support-v4-77d2bb13e201cce802447ca4f45e73877f6b22c6.jar

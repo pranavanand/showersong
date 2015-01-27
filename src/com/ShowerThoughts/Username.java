@@ -27,7 +27,6 @@ public class Username extends ActionBarActivity implements View.OnClickListener 
     }
 	private void loginClick() {
 		sUsername = eUsername.getText().toString();
-		((TheUrlClass) this.getApplication()).setUrl(sUsername);
 		Intent intent = new Intent(this, MainActivity.class);
 		intent.putExtra("containsUsername", sUsername);
 		startActivity(intent);

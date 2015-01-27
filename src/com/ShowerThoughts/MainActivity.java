@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
                 JSONObject topTracks = null;
                 try {
                     topTracks = response.getJSONObject("toptracks");
-                    JSONArray tracks = response.getJSONArray("track");
+                    JSONArray tracks = topTracks.getJSONArray("track");
                     String[] songNames = new String[tracks.length()];
                     String[] artistNames = new String[tracks.length()];
                     String[] songAndArtists = new String[tracks.length()];
