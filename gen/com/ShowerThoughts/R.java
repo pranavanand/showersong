@@ -1648,7 +1648,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f09002e;
         public static final int action_mode_bar_stub=0x7f09002d;
         public static final int action_mode_close_button=0x7f090020;
-        public static final int action_settings=0x7f090042;
+        public static final int action_settings=0x7f090043;
         public static final int activity_chooser_view_content=0x7f090021;
         public static final int always=0x7f090014;
         public static final int beginning=0x7f09001b;
@@ -1659,6 +1659,7 @@ containing a value of this type.
         public static final int dialog=0x7f090019;
         public static final int disableHome=0x7f09000d;
         public static final int dropdown=0x7f09001a;
+        public static final int editText1=0x7f09003f;
         public static final int edit_query=0x7f090033;
         public static final int end=0x7f09001c;
         public static final int expand_activities_button=0x7f090022;
@@ -1669,9 +1670,9 @@ containing a value of this type.
         public static final int ifRoom=0x7f090016;
         public static final int image=0x7f090023;
         public static final int listMode=0x7f09000a;
-        public static final int listView1=0x7f09003f;
+        public static final int listView1=0x7f090040;
         public static final int list_item=0x7f090025;
-        public static final int login=0x7f090040;
+        public static final int login=0x7f090041;
         public static final int middle=0x7f09001d;
         public static final int never=0x7f090017;
         public static final int none=0x7f09000f;
@@ -1699,7 +1700,7 @@ containing a value of this type.
         public static final int title=0x7f090027;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090013;
-        public static final int username=0x7f090041;
+        public static final int username=0x7f090042;
         public static final int withText=0x7f090018;
         public static final int wrap_content=0x7f090009;
     }
@@ -1821,6 +1822,7 @@ containing a value of this type.
         public static final int app_name=0x7f0a0010;
         public static final int hello_world=0x7f0a0011;
         public static final int prompt=0x7f0a0014;
+        public static final int read=0x7f0a0017;
         public static final int start=0x7f0a0015;
         public static final int string1=0x7f0a0016;
         public static final int title_activity_main=0x7f0a0013;

@@ -8,6 +8,7 @@
     <string name="prompt">Enter Your Username</string>
     <string name="start">Start Showering!</string>
     <string name="string1">TextView</string>
+    <string name="read">Tell me my tunes</string>
     
 
 </resources>

@@ -1,35 +1,45 @@
 package com.ShowerThoughts;
 
+import java.util.Locale;
+
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements OnInitListener, OnClickListener {
 	
     public static final String TAG = "ST_Main";
 
     private ListView listview;
     private AsyncHttpClient client;
     String url;
+    private TextToSpeech tts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
+        tts = new TextToSpeech(this, this);
         Intent intent = getIntent();
 		Bundle bundle = intent.getExtras();
 		String username = bundle.getString("containsUsername");
@@ -91,9 +101,49 @@ public class MainActivity extends ActionBarActivity {
                 // called when request is retried
                 Log.e(TAG, "");
             }
+            
+            
+                 
+            
+            
         });
+        
+        @SuppressWarnings("deprecation")
+        private void readSongs() {
+        	tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+    	}
+        
+        public void onClick (View v) {
+    		switch (v.getId()) {
+    			case R.id.login:
+    				readSongs();
+    				break;
+    		}
+    	}   
     }
+    @Override
+    public void onInit(int code) {
+          if (code==TextToSpeech.SUCCESS) {
+        	  tts.setLanguage(Locale.getDefault());
+          } else {
+        	  tts = null;
+        	  Toast.makeText(this, "Failed to initialize TTS engine.",
+        	  Toast.LENGTH_SHORT).show();
+          }
+    }
+    
+    
+    
 
+    
+    @Override
+    protected void onDestroy() {
+          if (tts!=null) {
+        	  tts.stop();
+        	  tts.shutdown();
+          }
+          super.onDestroy();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
